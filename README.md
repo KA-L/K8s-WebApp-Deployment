@@ -1,5 +1,5 @@
 # DevOps - K8s-WebApp-Deployment
-# Projet de Déploiement d'une Application Web avec Kubernetes et Terraform
+## Projet de Déploiement d'une Application Web avec Kubernetes et Terraform
 
 Ce projet vise à automatiser le déploiement d'une application web à l'aide de Kubernetes et Terraform. L'objectif est de créer une infrastructure cloud, provisionner un cluster Kubernetes, puis déployer une application web à l'intérieur de ce cluster.
 
