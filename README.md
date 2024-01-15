@@ -1,7 +1,7 @@
 # DevOps - K8s-WebApp-Deployment
 ## Projet de Déploiement d'une Application Web avec Kubernetes et Vagrant
 
-Ce projet vise à fournir une solution complète pour le déploiement local d'une application web end-to-end via Kubernetes. L'objectif est d'automatiser entièrement le processus de déploiement en utilisant un script unique, incluant la création d'un équilibrage de charge, le déploiement de deux conteneurs d'application, et le déploiement d'un conteneur de base de données.
+Ce projet vise à fournir une solution complète pour le déploiement local d'une application web end-to-end via Kubernetes. L'objectif est d'automatiser entièrement le processus de déploiement en utilisant un script unique, incluant la création d'un load balancer, le déploiement de deux conteneurs d'application, et le déploiement d'un conteneur de base de données.
 
 ## Technologies utilisées
 
