@@ -1,53 +1,51 @@
 # DevOps - K8s-WebApp-Deployment
 ## Projet de Déploiement d'une Application Web avec Kubernetes et Terraform
 
-Ce projet vise à automatiser le déploiement d'une application web à l'aide de Kubernetes et Terraform. L'objectif est de créer une infrastructure cloud, provisionner un cluster Kubernetes, puis déployer une application web à l'intérieur de ce cluster.
+Ce projet vise à fournir une solution complète pour le déploiement local d'une application web end-to-end via Kubernetes. L'objectif est d'automatiser entièrement le processus de déploiement en utilisant un script unique, incluant la création d'un équilibrage de charge, le déploiement de deux conteneurs d'application, et le déploiement d'un conteneur de base de données.
 
 ## Technologies utilisées
 
 - **Docker:** Utilisé pour la conteneurisation de l'application et de la base de données.
 - **Kubernetes (K8s):** Utilisé pour l'orchestration des conteneurs.
-- **Terraform:** Utilisé pour la provision de l'infrastructure Azure.
-- **Azure CLI:** Utilisé pour la gestion des ressources Azure.
-- **kubectl:** Utilisé pour interagir avec le cluster Kubernetes.
+- **Vagrant:** Utilisé pour la gestion de Machines Virtuelles.
 
 ## Structure du Projet
 
 ```plaintext
-project/
-|-- terraform/
-|   |-- main.tf
-|   |-- variables.tf
-|   |-- outputs.tf
-|-- k8s/
-|   |-- deployment.yaml
-|   |-- service.yaml
-|-- scripts/
-|   |-- deploy.sh
+/project
+|-- /app
+| |-- deployment.yaml
+|-- /database
+| |-- deployment.yaml
+|-- Vagrantfile
+|-- provisioning-script.sh
+|-- deployment-script.sh
+|-- README.md
 ```
 
-- **terraform/:** Contient les fichiers de configuration Terraform pour provisionner l'infrastructure Azure.
-- **k8s/:** Contient les fichiers de configuration YAML Kubernetes pour le déploiement de l'application.
-- **scripts/:** Contient le script deploy.sh qui orchestre le déploiement en utilisant Terraform, Azure CLI, et kubectl.
+- **/projet/app/deployment.yaml**: Configuration de déploiement pour l'application.
+- **/projet/database/deployment.yaml**: Configuration de déploiement pour la base de données.
 
 ## Prérequis
 
 Assurez-vous d'avoir les outils suivants installés sur votre machine de développement :
-- Docker
-- Azure CLI
-- kubectl
-- Terraform
+- Vagrant installé localement
+- VirtualBox (ou autre fournisseur Vagrant) installé localement
 
 ## Instructions d'utilisation
 
-1. Clonez le projet sur votre machine locale.
-2. Assurez-vous d'avoir les prérequis installés.
-3. Configurez les variables nécessaires dans les fichiers Terraform.
-4. Exécutez le script deploy.sh pour provisionner l'infrastructure, configurer kubectl, et déployer l'application.
-
-```bash
-./scripts/deploy.sh
-```
-## Avertissement
-- Assurez-vous de gérer les informations sensibles de manière appropriée, en utilisant par exemple des fichiers de configuration non versionnés pour les secrets.
-- Ce projet suppose une infrastructure Azure. Si vous utilisez un autre fournisseur cloud, vous devrez adapter les fichiers Terraform en conséquence.
+1. Clonez ce dépôt sur votre machine local.
+   ```bash
+   git clone https://github.com/votre-utilisateur/nom-du-projet.git
+2. Naviguez vers le dossier du projet.
+   ```bash
+   cd nom-du-projet
+3. Lancez la machine virtuelle Vagrant.
+   ```bash
+   vagrant up
+4. Une fois la VM démarrée, provisionnez-la avec les dépendances nécessaires.
+   ```bash
+   vagrant provision
+5. Exécutez le script de déploiement à l'intérieur de la VM.
+   ```bash
+   vagrant ssh -c "/chemin/vers/deployment-script.sh"
