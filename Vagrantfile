@@ -37,18 +37,31 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  # Configuration des workers
-  (1..2).each do |i|
-    config.vm.provision "shell", inline: $script 
-    config.vm.define "worker#{i}" do |worker|
-      worker.vm.box = "bento/ubuntu-20.04"
-      worker.vm.hostname = "k8s-worker#{i}"
-      worker.vm.network "private_network", ip: "192.168.50.1#{i}"
-      worker.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-        vb.cpus = 2
-        vb.name = "worker#{i}"
-      end
+  # Configuration du worker
+  config.vm.provision "shell", inline: $script 
+  config.vm.define "worker" do |worker|
+    worker.vm.box = "bento/ubuntu-20.04"
+    worker.vm.hostname = "k8s-worker"
+    worker.vm.network "private_network", ip: "192.168.50.11"
+    worker.vm.provider "virtualbox" do |vb|
+      vb.memory = "2048"
+      vb.cpus = 2
+      vb.name = "worker"
     end
   end
+
+  # Configuration des workers
+  #(1..2).each do |i|
+    #config.vm.provision "shell", inline: $script 
+    #config.vm.define "worker#{i}" do |worker|
+      #worker.vm.box = "bento/ubuntu-20.04"
+      #worker.vm.hostname = "k8s-worker#{i}"
+      #worker.vm.network "private_network", ip: "192.168.50.1#{i}"
+      #worker.vm.provider "virtualbox" do |vb|
+        #vb.memory = "2048"
+        #vb.cpus = 2
+        #vb.name = "worker#{i}"
+      #end
+    #end
+  #end
 end
