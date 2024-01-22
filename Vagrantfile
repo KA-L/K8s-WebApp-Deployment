@@ -11,6 +11,9 @@ sudo apt-get install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
+echo "192.168.50.10 k8s-master" >> /etc/hosts
+echo "192.168.50.11 k8s-worker1" >> /etc/hosts
+
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
 sudo sysctl net.ipv4.ip_forward=1
 SCRIPT

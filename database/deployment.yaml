@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+spec:
+  replicas: 1  # Une seule réplique pour la base de données
+  selector:
+    matchLabels:
+      app: my-database
+  template:
+    metadata:
+      labels:
+        app: my-database
+    spec:
+      containers:
+      - name: database-container
+        image: mysql:latest  # Utilisation de l'image MySQL
+        ports:
+        - containerPort: 3306  # Port sur lequel votre base de données écoute à l'intérieur du conteneur
+        env:
+        - name: MYSQL_ROOT_PASSWORD  # Remplacez par les variables d'environnement nécessaires
+          value: my-secret-pw
+        - name: MYSQL_DATABASE
+          value: mydatabase
+        - name: MYSQL_USER
+          value: dbuser
+        - name: MYSQL_PASSWORD
+          value: dbpassword
