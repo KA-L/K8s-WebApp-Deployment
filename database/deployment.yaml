@@ -21,7 +21,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD  # Remplacez par les variables d'environnement nécessaires
           value: my-secret-pw
         - name: MYSQL_DATABASE
-          value: Devopsprojet
+          value: devopsprojet
         - name: MYSQL_USER
           value: dbuser
         - name: MYSQL_PASSWORD

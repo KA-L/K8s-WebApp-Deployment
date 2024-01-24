@@ -16,7 +16,7 @@ spec:
       - name: devops-app-container
         image: nginx:latest   # Utilisation de l'image nginx
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         env:
           - name: DATABASE_HOST
             value: database-service  # Nom du service de la base de données dans le cluster
@@ -27,7 +27,7 @@ spec:
           - name: DATABASE_PASSWORD
             value: dbpassword
           - name: DATABASE_NAME
-            value: mydatabase
+            value: devopsprojet
 
 ---
 
@@ -41,5 +41,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80  # Port externe auquel le service sera exposé
-      targetPort: 8080  # Port auquel les pods répondent
+      targetPort: 80  # Port auquel les pods répondent
   type: LoadBalancer
