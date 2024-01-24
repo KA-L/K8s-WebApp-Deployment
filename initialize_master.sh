@@ -47,5 +47,25 @@ sudo apt-get install -y sshpass
 # Join worker node to Kubernetes cluster
 sshpass -p "${WORKER_PSW}" ssh -o StrictHostKeyChecking=no ${SSH_WORKER_USER}@${WORKER_IP} sudo $JOIN_CMD
 
+sleep 5
+#Check if all nodes are ready
+
+while kubectl get nodes | grep "NotReady";
+do
+        echo "Tous les noeuds ne sont pas prêts";
+        sleep 5;
+done
+        echo "Les noeuds sont désormais prêts";
+
+
+kubectl apply -f ./database/deployment.yaml
+kubectl apply -f ./database/service.yaml
+
+# Attendre quelques instants pour que la base de données soit prête
+sleep 30
+
+# Déployer l'application
+kubectl apply -f ./app/deployment.yaml
+
 # Verify that the worker node has joined the cluster successfully
 kubectl get nodes -o wide
