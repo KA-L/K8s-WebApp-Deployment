@@ -4,7 +4,7 @@ metadata:
   name: database-service
 spec:
   selector:
-    app: Devopsdatabase
+    app: devopsdatabase
   ports:
   - protocol: TCP
     port: 3306
