@@ -6,11 +6,11 @@ spec:
   replicas: 1  # Une seule réplique pour la base de données
   selector:
     matchLabels:
-      app: my-database
+      app: Devopsdatabase
   template:
     metadata:
       labels:
-        app: my-database
+        app: Devopsdatabase
     spec:
       containers:
       - name: database-container
